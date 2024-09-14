@@ -15,10 +15,10 @@ def index():
 
 @app.route("/binary_question")
 def binary_question():
-    level_query = request.args.get('level_query')
-    user_answer = request.args.get('user_answer')
+    level_prompt = request.args.get('level_prompt')
+    user_prompt = request.args.get('user_prompt')
     try:
-        data = binary_response_prompt(level_query, user_answer)
+        data = binary_response_prompt(level_prompt, user_prompt)
 
         response = app.response_class(
             response=json.dumps(data),
