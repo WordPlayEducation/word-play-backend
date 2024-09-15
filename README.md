@@ -1,3 +1,3 @@
 # HackMIT2024_Backend
-Backend for genAI powered game engine
+Backend for a genAI powered education game.
 
