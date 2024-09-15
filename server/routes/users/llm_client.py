@@ -65,7 +65,8 @@ def llm_classify_object(user_prompt: str):
     level_prompt += "using the following format to estimate certain parameters. 'Type: (fluid, inanimate solid, life, or none) "
     level_prompt += "if a student's answer doesn't fit well into any of the categories, or is not appropriate for elementary school children, "
     level_prompt += "return a type of none. For all non-none types, also add the following parameters: color: hex_string (ex. #FFFFFF), "
-    level_prompt += "sub_color: hex_string (ex. #000000), size: string (one of 'wide', 'tall', 'small', or 'big'), dynamic: a floating point "
+    level_prompt += "sub_color: hex_string (ex. #000000), size: string (one of 'wide', 'tall', 'small', or 'big'), viscosity for all fluid objects: a "
+    level_prompt += "floating point between 0 and 1 with 1 being very viscous and 0 being not viscous at all, dynamic: a floating point"
     level_prompt += "number between 0 and 1 describing how expressive the word is. Inanimate solids should additionally have physics_type: "
     level_prompt += "'movable' or 'rigid' defining if this object can move (for example brick or stone are rigid, but bottles and pans are immovable) "
     level_prompt += "Finally, living objects should include movement_type: string (one of 'land', 'air', 'fluid'), activity: floating point "
@@ -89,7 +90,7 @@ def llm_classify_object(user_prompt: str):
 if __name__ == "__main__":
     while True:
         user_inp = input("Enter an object to classify: ")
-        classify_object(user_inp)
+        llm_classify_object(user_inp)
 
 # Type Structure
 
