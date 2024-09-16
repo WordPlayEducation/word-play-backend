@@ -1,5 +1,3 @@
-import random
-import json
 import requests
 
 
