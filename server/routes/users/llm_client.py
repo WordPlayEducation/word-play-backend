@@ -87,9 +87,9 @@ def llm_classify_object(user_prompt: str):
     \"
 
     Strictly respond with the comma seperated list format, with no additional information or 
-    punctuation. If you cannot perform the task, respond with the none type. You're working with 
-    children, so heir on the saftey. We prefer that they not see topics related to violence, 
-    drugs, or other adult themes.
+    punctuation. There should not be spaces before each key. If you cannot perform the task, 
+    respond with the none type. You're working with children, so heir on the saftey. We prefer 
+    that they not see topics related to violence, drugs, or other adult themes.
     """
 
     answer = response_trial(level_prompt,user_prompt)
