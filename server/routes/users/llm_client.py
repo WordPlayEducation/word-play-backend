@@ -115,34 +115,3 @@ if __name__ == "__main__":
     while True:
         user_inp = input("Enter an object to classify: ")
         llm_classify_object(user_inp)
-
-# Type Structure
-
-# ALL non-null types have these parameters:
-#
-# "color": string (#FFFFFF), <- Optional
-# "sub_color": string (#FFFFFF) <- Optional [like, if an object has 2 colors... its ok if this one doesnt work well]
-# "size": string ... must be either ("wide", "tall", "small", "big")
-# "dynamic": float ([0, 1]), <- Optional [ like, how expressive the word is ]
-
-# ## Fluids
-#
-# response = {
-#     "type": "fluid",
-# }
-#
-# ## Inanimate Solids
-#
-# response = {
-#     "type": "inanimate_solid",
-#     "dynamic": float ([0, 1]), <- Optional
-#     "physics_type": string ("mobile" | "rigid") [rigid are thiings like brick, rocks, house ... immovable objects in games; mobile are things you can push, like a bottle or something small]
-# }
-
-# ## Life
-#
-# response = {
-#     "type": "life",
-#     "movement_type": string ("land", "air", "fluid"),
-#     "activity": float ([0, 1]) [how much this critter would movev around, how fast, etc.]
-# }
