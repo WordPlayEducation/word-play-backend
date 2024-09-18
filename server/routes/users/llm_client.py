@@ -1,10 +1,5 @@
 import requests
 
-
-# Hard coded rn, switch later
-# level_prompt = "You are an elementary school teacher who wants to teach her students about household objects. You need to verify, in a one word answer of yes or no, whether these objects fulfill the object category that was selected."
-# user_prompt = "car"
-
 def response_trial(level_prompt, user_prompt):
     stream = False
     url = "https://proxy.tune.app/chat/completions"
@@ -30,11 +25,7 @@ def response_trial(level_prompt, user_prompt):
         "max_tokens": 100
     }
     response = requests.post(url, headers=headers, json=data)
-    # print(level_prompt)
-    # print(user_prompt)
-    # print(response.json())
     trial = response.json()["choices"][0]["message"]["content"]
-    # print("Trial output: ", trial)
     return trial
     
 
