@@ -63,34 +63,38 @@ def llm_classify_object(user_prompt: str):
     Use the following format to estimate certain parameters (do not include the quotation marks
     in your response):
 
-    \"Type: string (fluid, inanimate solid, life, or none (only actively moving biological words
-    are regarded as a life object))\"
+    \"Type: string (fluid, inanimate solid, life, or none (only actively moving biological 
+    words are regarded as a life object))\"
     
-    if a student's answer doesn't fit well into any type of the categories, or is not appropriate 
-    for elementary school children, return a type of none. For all non-none types, also add the following
-    parameters (do not include the quotation marks in your response):
+    if a student's answer doesn't fit well into any type of the categories, or is not 
+    appropriate for elementary school children, return a type of none. For all non-none types, 
+    also add the following parameters (do not include the quotation marks or parenthesis in 
+    your response):
 
     \"
     color: hex_string (ex. #B4D455),
     sub_color: hex_string (ex. #B4D455), 
     size: string (one of \"wide\", \"tall\", \"small\", or \"big\"),
-    dynamic: floating point value between 0 and 1. How active you think an object is. For example, a 
-    hyper-active object would have a value of 1 and a not active at all object would have a value of 0.
-    \"viscosity\" for all fluid objects: floating point value between 0 and 1. For example, molasses 
-    would have a value of 1 and water/air would have a value of 0.
-    physics_type for all inanimate objects: string (\"moveable\" or \"rigid\" defining whether the 
-    object should be pushable, for example, bottles and pans are moveable but boulders and stairs are 
-    immovable),
-    movement_type for all \"life\" objects: string (one of 'land', 'air', 'fluid'),
+    dynamic: floating point value between 0 and 1. How active you think an object is. For 
+    example, a hyper-active object would have a value of 1 and a not active at all object would 
+    have a value of 0.
+    \"viscosity\" for all fluid objects: floating point value between 0 and 1. For example, 
+    molasses would have a value of 1 and water/air would have a value of 0.
+    physics_type for all inanimate objects: string (\"moveable\" or \"rigid\" defining whether 
+    the object should be pushable, for example, bottles and pans are moveable but boulders and 
+    stairs are immovable),
+    movement_type (for all \"life\" objects): string (one of 'land', 'air', 'fluid'),
     \"
 
-    Strictly respond with the comma seperated list format, with no additional information or punctuation. 
-    If you cannot perform the task, respond with the none type. You're working with children, so heir on 
-    the saftey. We prefer that they not see topics related to violence, drugs, or other adult themes.
+    Strictly respond with the comma seperated list format, with no additional information or 
+    punctuation. There should not be spaces before each key. Everything should be lowercase.  
+    If you cannot perform the task, respond with the \"none\". You're working with children, so 
+    heir on the saftey. We prefer that they not see topics related to violence, drugs, or other 
+    adult themes.
     """
 
     answer = response_trial(level_prompt,user_prompt)
-    lst = answer.split(",")
+    lst = answer.split(", ")
     print(lst)
     if lst[0] == "none":
         data = {"type": "none"}
